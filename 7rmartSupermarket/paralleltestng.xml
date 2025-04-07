@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="parallel testing" parallel="classes" thread-count="5">
+	<parameter name="browser" value="Chrome"></parameter>
+
+
+	<test thread-count="3" name="Test">
+
+		<classes>
+
+			<class name="testscript.LoginTest">
+				<methods>
+					<include
+						name="verifyWhetherUserCanLoginWithValidCredentials"></include>
+					<include
+						name="verifyWhetherUserCanLoginWithValidUsernameAndInvalidPassword"></include>
+				</methods>
+			</class>
+			<class name="testscript.HomeTest">
+				<methods>
+					<include name="verifyWhetherUserIsAbleToLogout"></include>
+				</methods>
+			</class>
+
+
+		</classes>
+	</test> <!--
+		
+	Test -->
+</suite> <!--
+Suite -->
