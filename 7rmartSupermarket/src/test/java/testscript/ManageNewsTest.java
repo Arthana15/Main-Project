@@ -14,7 +14,7 @@ import utilities.ExcelUtility;
 import utilities.WaitUtility;
 
 public class ManageNewsTest extends Base {
-	
+
 	ManageNewsPage managenews;
 	HomePage homepage;
 
@@ -24,39 +24,41 @@ public class ManageNewsTest extends Base {
 		String usernameValue = ExcelUtility.getStringData(0, 0, "SignInPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue).clickOnSignInButton();
+		login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage = login.clickOnSignInButton();
 
-		//ManageNewsPage news = new ManageNewsPage(driver);
-		managenews=homepage.clickOnManageNews();
+		// ManageNewsPage news = new ManageNewsPage(driver);
+		managenews = homepage.clickOnManageNews();
 		managenews.clickOnNewManageNews();
 		String newsValue = ExcelUtility.getStringData(0, 0, "ManageNewsPage");
 		managenews.enterNewsDetailsOnNewsField(newsValue);
-		//explicit wait
-		//WaitUtility wait = new WaitUtility();
-		//wait.waitUntilElementToBeClickable(driver, news.saveButtonNews);
+		// explicit wait
+		// WaitUtility wait = new WaitUtility();
+		// wait.waitUntilElementToBeClickable(driver, news.saveButtonNews);
 		managenews.clickOnSaveNewsButton();
 
 		boolean isNewsCreatedAlertDisplayed = managenews.isNewsCreatedAlertDisplayed();
-		Assert.assertTrue(isNewsCreatedAlertDisplayed,Messages.CREATE_NEWS_ERROR);
+		Assert.assertTrue(isNewsCreatedAlertDisplayed, Messages.CREATE_NEWS_ERROR);
 
 	}
 
 	@Test(description = "Verify whether user is able to search for news ")
 	public void verifyWhetherUserIsAbleToSearchNews() throws IOException {
-		
+
 		String usernameValue = ExcelUtility.getStringData(0, 0, "SignInPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue).clickOnSignInButton();
+		login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage = login.clickOnSignInButton();
 
-		//ManageNewsPage news = new ManageNewsPage(driver);
-		managenews=homepage.clickOnManageNews();
+		// ManageNewsPage news = new ManageNewsPage(driver);
+		managenews = homepage.clickOnManageNews();
 		managenews.clickOnSearchButton();
 		String newsValue = ExcelUtility.getStringData(0, 0, "ManageNewsPage");
 		managenews.enterTitleOnTitleField(newsValue);
 		managenews.clickOnSearchTitleButton();
 		boolean isNewsSearchUpdateIconDisplayed = managenews.isNewsSearchUpdateIconDisplayed();
-		Assert.assertTrue(isNewsSearchUpdateIconDisplayed,Messages.SEARCH_NEWS_ERROR);
+		Assert.assertTrue(isNewsSearchUpdateIconDisplayed, Messages.SEARCH_NEWS_ERROR);
 
 	}
 

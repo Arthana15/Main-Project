@@ -25,14 +25,12 @@ public class AdminUsersTest extends Base {
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 
 		LoginPage login = new LoginPage(driver);
-		homepage = login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue)
-				.clickOnSignInButton();
+		login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage = login.clickOnSignInButton();
 
-		/* Admin User */
 		// AdminUsersPage admin=new AdminUsersPage(driver);
-		adminuser = homepage.clickOnAdminUser();
-
-		adminuser.clickOnManageUsers();
+		homepage.clickOnAdminUser();
+		adminuser = homepage.clickOnManageUsers();
 		adminuser.clickOnNewUserButton();
 		RandomDataUtility random = new RandomDataUtility();
 		// String adminUserValue=ExcelUtility.getStringData(0, 0, "AdminUsersPage");
@@ -54,13 +52,13 @@ public class AdminUsersTest extends Base {
 		String usernameValue = ExcelUtility.getStringData(0, 0, "SignInPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 		LoginPage login = new LoginPage(driver);
-		homepage = login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue)
-				.clickOnSignInButton();
+		login.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage = login.clickOnSignInButton();
 
 		/* Search */
 
-		adminuser = homepage.clickOnAdminUser();
-		adminuser.clickOnManageUsers().clickOnSearchUserButton();
+		homepage.clickOnAdminUser();
+		adminuser = homepage.clickOnManageUsers().clickOnSearchUserButton();
 		String adminUserValue = ExcelUtility.getStringData(0, 0, "AdminUsersPage");
 		adminuser.enterUsernameOnSearchUsernameField(adminUserValue);
 		adminuser.searchUserType().pageScroll().clickOnSearchAdminUserButton();

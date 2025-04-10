@@ -28,7 +28,6 @@ public class HomeTest extends Base {
 		homepage = loginpage.clickOnSignInButton();
 
 		/* logout */
-
 		homepage.clickOnAdmin();
 		loginpage = homepage.clickOnLogout();
 		String actual = homepage.getTextFromTitle();

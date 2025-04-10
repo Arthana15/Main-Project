@@ -24,7 +24,8 @@ public class SubCategoryTest extends Base {
 		String usernameValue = ExcelUtility.getStringData(0, 0, "SignInPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 		LoginPage loginpage = new LoginPage(driver);
-		homepage=loginpage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue).clickOnSignInButton();
+		loginpage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage=loginpage.clickOnSignInButton();
 
 		//SubCategoryPage subcategory = new SubCategoryPage(driver);
 		subcategory=homepage.pageScroll();
@@ -43,7 +44,8 @@ public class SubCategoryTest extends Base {
 		String usernameValue = ExcelUtility.getStringData(0, 0, "SignInPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "SignInPage");
 		LoginPage loginpage = new LoginPage(driver);
-		homepage=loginpage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue).clickOnSignInButton();
+		loginpage.enterUsernameOnUsernameField(usernameValue).enterPasswordOnPasswordField(passwordValue);
+		homepage=loginpage.clickOnSignInButton();
 
 		//SubCategoryPage subcategory = new SubCategoryPage(driver);
 		subcategory=homepage.clickOnSubCategoryTile();
